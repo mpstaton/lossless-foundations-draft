@@ -2,23 +2,53 @@
 import "../styles/global.css";
 import HypertextStartmatter from "../basics/HypertextStartmatter.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import HypertextEndmatter from "../basics/HypertextEndmatter.astro";
-import HelloWorld from "../components/HelloWorld.astro";
-import { getCollection, getEntries } from "astro:content";
+import HypertextEndmatter from "@basics/HypertextEndmatter.astro";
 
-const allSections = await getCollection('sections');
+import { type CollectionEntry, getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+    const allSections: CollectionEntry<'sections'>[] = await getCollection('sections');
+    return allSections.map((section) => ({
+        params: { slug: section.slug },
+        props: { section },
+    }));
+}
+
+const allSections: CollectionEntry<'sections'>[] = await getCollection('sections');
 console.log(allSections);
 ---
-
+<>
 <HypertextStartmatter />
-	<body>
-
-		<BaseLayout>
-
-            <HelloWorld />
-
-		</BaseLayout>
-
-	</body>
-
+<BaseLayout>
+	<div class="base-reader-container">
+	<ul>
+		{allSections.map((section) => (
+			<li>
+				<h1>{section.data.title}</h1>
+				<p>{section.data.description}</p>
+			</li>
+		))}
+    </ul>
+	</div>
+</BaseLayout>
 <HypertextEndmatter />
+</>
+
+<style>
+	h1 {
+		font-size: 2em;
+	}
+	li {
+		margin-bottom: 1rem;
+	}
+
+	.base-reader-container {
+		margin: auto;
+		padding: 1em;
+		width: 94vw;
+		height: 86vh;
+		justify-self: start;
+		border: 1px solid var(--bastille);
+	}
+</style>
+

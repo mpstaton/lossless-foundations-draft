@@ -1,6 +1,9 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import content from '@astrojs/content';
+
+import mdx from '@astrojs/mdx';
+
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,5 +12,5 @@ export default defineConfig({
           preserveSymlinks: true
         }
       },
-      integrations: [content()],
+      integrations: [mdx(), sitemap()],
 });

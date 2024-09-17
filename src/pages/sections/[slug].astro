@@ -1,0 +1,27 @@
+---
+import "../../styles/global.css";
+import HypertextStartmatter from "../../basics/HypertextStartmatter.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HypertextEndmatter from "../../basics/HypertextEndmatter.astro";
+
+import { type CollectionEntry, getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+    const allSections: CollectionEntry<'sections'>[] = await getCollection('sections');
+    return allSections.map((section) => ({
+        params: { slug: section.slug },
+        props: { section },
+    }));
+}
+
+const allSections: CollectionEntry<'sections'>[] = await getCollection('sections');
+---
+<HypertextStartmatter />
+<BaseLayout>
+    <ul>
+    {allSections.map((section) => (
+        <li>{section.data.title}</li>
+    ))}
+    </ul>
+</BaseLayout>
+<HypertextEndmatter />
