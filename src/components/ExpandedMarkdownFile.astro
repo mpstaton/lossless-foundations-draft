@@ -1,0 +1,12 @@
+---
+import { getCollection } from "astro:content";
+const { frontmatter } = Astro.props;
+---
+
+<div>
+    <h1>{frontmatter.title}</h1>
+    <p>{frontmatter.description}</p>
+    <p>{frontmatter.pubDate.toString()}</p>
+    <p>{frontmatter.author}</p>
+    <slot />
+</div>

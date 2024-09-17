@@ -5,7 +5,11 @@ import Footer from "../basics/Footer.astro";
 ---
 
 <Header />
-    <div class="body-container-column" />
+    <main>
+        <div class="body-container-column">
+            <slot />
+        </div>
+    </main>
 
 <Footer />
 
