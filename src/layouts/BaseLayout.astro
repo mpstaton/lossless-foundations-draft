@@ -1,18 +1,21 @@
 ---
-import "../styles/global.css";
-import Header from "../basics/Header.astro";
-import Footer from "../basics/Footer.astro";
+import HypertextStartmatter from "@basics/HypertextStartmatter.astro";
+import HypertextEndmatter from "@basics/HypertextEndmatter.astro";
+import Header from "@basics/Header.astro";
+import Footer from "@basics/Footer.astro";
 ---
 
+<HypertextStartmatter />
 <Header />
+<body>
     <main>
         <div class="body-container-column">
             <slot />
         </div>
     </main>
-
+</body>
 <Footer />
-
+<HypertextEndmatter />
 <style>
     .body-container-column {
         display: flex;

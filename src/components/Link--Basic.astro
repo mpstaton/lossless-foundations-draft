@@ -1,0 +1,21 @@
+---
+import '@styles/global.css';
+const { href, label } = Astro.props;
+---
+
+<a href={href}>
+    {label}
+</a>
+<style>
+    a {
+        color: var(--clr-lossless-primary--light);
+    }
+</style>
+
+<script>
+    const link = document.querySelector('a');
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('link clicked');
+    });
+</script>

@@ -8,8 +8,7 @@
       }
     ],
     "paths": {
-      "@basics/*": [".src/basics/*"],
-      "@components/*": ["./src/components/*"],
+      "@basics/*": ["./src/components/basics/*"],
       "@layouts/*": ["./src/layouts/*"],
       "@styles/*": ["./src/styles/*"]
     }
