@@ -4,6 +4,7 @@ import HypertextStartmatter from "../basics/HypertextStartmatter.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HypertextEndmatter from "../basics/HypertextEndmatter.astro";
 import HelloWorld from "../components/HelloWorld.astro";
+import { Content as AboutContent } from "../content/about.md";
 ---
 
 <HypertextStartmatter />
@@ -11,6 +12,7 @@ import HelloWorld from "../components/HelloWorld.astro";
 
 		<BaseLayout>
 			<HelloWorld />
+			<AboutContent />
 		</BaseLayout>
 
 	</body>
