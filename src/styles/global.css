@@ -45,9 +45,9 @@
 
     --ff-base: 'Poppins', sans-serif;
 
-    --fw-regular: 400; 
-    --fw-semi-bold: 700; 
-    --fw-bold: 900; 
+    --fw-regular: 200; 
+    --fw-semi-bold: 400; 
+    --fw-bold: 600; 
 
     --fs-300: .8rem;
     --fs-350: .9rem;
@@ -61,3 +61,11 @@
     --flow-space: 2em;
 
 }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--ff-base);
+    font-weight: var(--fw-semi-bold);
+    font-size: var(--fs-800);
+    color: var(--clr-lossless-primary-light);
+}
+
