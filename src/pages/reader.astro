@@ -1,0 +1,24 @@
+---
+import "../styles/global.css";
+import HypertextStartmatter from "../basics/HypertextStartmatter.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HypertextEndmatter from "../basics/HypertextEndmatter.astro";
+import HelloWorld from "../components/HelloWorld.astro";
+import { getCollection, getEntries } from "astro:content";
+
+const allSections = await getCollection('sections');
+console.log(allSections);
+---
+
+<HypertextStartmatter />
+	<body>
+
+		<BaseLayout>
+
+            <HelloWorld />
+
+		</BaseLayout>
+
+	</body>
+
+<HypertextEndmatter />
