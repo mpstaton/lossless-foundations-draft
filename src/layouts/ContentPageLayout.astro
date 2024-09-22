@@ -1,5 +1,5 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 import BaseLayout from "/BaseLayout.astro";
 
 const allSections = await getCollection("sections");
@@ -8,7 +8,7 @@ const { frontmatter, data } = Astro.props;
 
 <BaseLayout>
   {
-    allSections.map((section: CollectionEntry<"sections">) => (
+    allSections.map((section: CollectionEntry<"section">) => (
       <div>
         <h1>{section.data.title}</h1>
         <p>{section.data.author}</p>
