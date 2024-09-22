@@ -8,20 +8,19 @@ import Footer from "@basics/Footer.astro";
 <HypertextStartmatter />
 <Header />
 <body>
-    <main>
-        <div class="body-container-column">
-            <slot />
-        </div>
-    </main>
+  <main>
+    <div class="body-container-column">
+      <slot />
+    </div>
+  </main>
 </body>
 <Footer />
 <HypertextEndmatter />
 <style>
-    .body-container-column {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        height: 90vh;
-    }
+  .body-container-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 90vh;
+  }
 </style>
