@@ -4,6 +4,7 @@ import HypertextStartmatter from "@basics/HypertextStartmatter.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import HypertextEndmatter from "@basics/HypertextEndmatter.astro";
 import Heading from "@components/ContentHeading.astro";
+import Counter from "@components/Counter.tsx";
 
 import { type CollectionEntry, getCollection } from "astro:content";
 
@@ -42,6 +43,7 @@ const headings = [
 <>
   <HypertextStartmatter />
   <BaseLayout>
+    <Counter client:only="react" />
     {
       headings.map((heading) => (
         <>
