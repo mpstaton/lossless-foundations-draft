@@ -10,7 +10,7 @@ const { img, alt, pill, title, description, author_img, author_name, time } =
   <p>{description}</p>
   <div class="author">
     <img src={author_img} alt={author_name} />
-    <div>
+    <div class="author-info">
       <p><strong>{author_name}</strong></p>
       <p>{time}</p>
     </div>
@@ -33,6 +33,7 @@ const { img, alt, pill, title, description, author_img, author_name, time } =
     border: 1px solid var(--clr-lossless-primary-light);
     border-radius: 1rem;
     padding: 1rem;
+    margin-left: 4vw;
     & h2 {
       font-size: 1.1rem;
       font-weight: 500;
@@ -55,10 +56,15 @@ const { img, alt, pill, title, description, author_img, author_name, time } =
 
   .author {
     display: flex;
-    gap: 1rem;
+    gap: 1em;
     align-items: flex-start;
-    margin-top: 0;
-    padding-top: 0;
+  }
+
+  .author-info {
+    & p {
+      margin-top: 0;
+      margin-bottom: 0.25em;
+    }
   }
 
   .author img {
