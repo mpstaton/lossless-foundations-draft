@@ -1,0 +1,20 @@
+---
+import "../styles/global.css";
+import { Icon } from "astro-icon/components";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import HelloWorld from "@components/HelloWorld.astro";
+import PricingCard from "@components/PricingCard.astro";
+---
+
+<BaseLayout>
+  <HelloWorld />
+  <PricingCard
+    tier="Free"
+    most_popular={false}
+    amount_per_month="0"
+    title="Free"
+    description="Free forever"
+    btn_text="Get Started"
+    features={["100% Free", "100% Free", "100% Free"]}
+  />
+</BaseLayout>

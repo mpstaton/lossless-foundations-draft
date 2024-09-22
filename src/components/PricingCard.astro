@@ -3,6 +3,7 @@
 import { Icon } from "astro-icon";
 import { type HTMLAttributes } from "astro/types";
 
+//why is this throwing errors?
 const {
   tier,
   most_popular,
@@ -13,16 +14,16 @@ const {
   features,
 } = Astro.props;
 
-interface Props extends HTMLAttributes<"svg"> {
-  /** The name of the icon to include */
-  name: string;
-  /** Shorthand for including a <title>{props.title}</title> element in the SVG */
-  title?: string;
-  /** Shorthand for setting width and height */
-  size?: number | string;
-  width?: number | string;
-  height?: number | string;
-}
+// interface Props extends HTMLAttributes<"svg"> {
+//   /** The name of the icon to include */
+//   name: string;
+//   /** Shorthand for including a <title>{props.title}</title> element in the SVG */
+//   title?: string;
+//   /** Shorthand for setting width and height */
+//   size?: number | string;
+//   width?: number | string;
+//   height?: number | string;
+// }
 ---
 
 <article>
