@@ -1,0 +1,68 @@
+---
+const { img, alt, pill, title, description, author_img, author_name, time } =
+  Astro.props;
+---
+
+<article class="card">
+  <img src={img} alt={alt} />
+  <p class="pill">{pill}</p>
+  <h2>{title}</h2>
+  <p>{description}</p>
+  <div class="author">
+    <img src={author_img} alt={author_name} />
+    <div>
+      <p><strong>{author_name}</strong></p>
+      <p>{time}</p>
+    </div>
+  </div>
+</article>
+
+<style is:global>
+  img {
+    display: block;
+    max-width: 100%;
+  }
+</style>
+
+<style>
+  article {
+    max-width: 300px;
+  }
+
+  .card {
+    border: 1px solid var(--clr-lossless-primary-light);
+    border-radius: 1rem;
+    padding: 1rem;
+    & h2 {
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    & p {
+      font-size: 0.8rem;
+      font-weight: 400;
+      font-family: "Libre Franklin", sans-serif;
+      color: var(--clr-lossless-primary-light);
+    }
+  }
+
+  .pill {
+    border: 1px solid var(--clr-lossless-primary-light);
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-family: "Onest", sans-serif;
+  }
+
+  .author {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .author img {
+    width: 30px;
+    border-radius: 100vmax;
+  }
+</style>

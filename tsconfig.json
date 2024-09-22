@@ -9,6 +9,7 @@
     ],
     "paths": {
       "@basics/*": ["./src/components/basics/*"],
+      "@components/*": ["./src/components/*"],
       "@layouts/*": ["./src/layouts/*"],
       "@styles/*": ["./src/styles/*"]
     }
