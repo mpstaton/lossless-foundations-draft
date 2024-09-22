@@ -21,23 +21,7 @@ const allSections: CollectionEntry<"sections">[] =
   await getCollection("sections");
 console.log(allSections);
 
-const headings = [
-  {
-    tagName: "h1",
-    size: "h2",
-    text: "Heading 1",
-  },
-  {
-    tagName: "h2",
-    size: "h5",
-    text: "Heading 2",
-  },
-  {
-    tagName: "h3",
-    size: "h6",
-    text: "Heading 3",
-  },
-];
+import headingsData from "../data/headingsData.json";
 ---
 
 <>
@@ -45,7 +29,7 @@ const headings = [
   <BaseLayout>
     <Counter client:only="react" />
     {
-      headings.map((heading) => (
+      headingsData.headings.map((heading) => (
         <>
           <p>hi</p>
           <Heading tagName={heading.tagName} size={heading.size}>

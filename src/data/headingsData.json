@@ -1,0 +1,17 @@
+{"headings": [
+    {
+      "tagName": "h1",
+      "size": "h2",
+      "text": "Heading 1"
+    },
+    {
+      "tagName": "h2",
+      "size": "h5",
+      "text": "Heading 2"
+    },
+    {
+      "tagName": "h3",
+      "size": "h6",
+      "text": "Heading 3"
+    }
+  ]}
