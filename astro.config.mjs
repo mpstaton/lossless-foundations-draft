@@ -7,6 +7,8 @@ import sitemap from '@astrojs/sitemap';
 
 import react from '@astrojs/react';
 
+import icon from 'astro-icon';
+
 // https://astro.build/config
 export default defineConfig({
     vite: {
@@ -14,5 +16,5 @@ export default defineConfig({
           preserveSymlinks: true
         }
       },
-      integrations: [mdx(), sitemap(), react()],
+      integrations: [mdx(), sitemap(), react(), icon()],
 });

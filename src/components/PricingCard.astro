@@ -1,6 +1,6 @@
 ---
-// library imports
-import { Icon } from "astro-icon";
+import "../styles/global.css";
+import { Icon } from "astro-icon/components";
 import { type HTMLAttributes } from "astro/types";
 
 //why is this throwing errors?
@@ -26,8 +26,8 @@ const {
 // }
 ---
 
-<article>
-  <p>{tier}</p>
+<article class="option-card">
+  <p class="tier">{tier}</p>
 
   <!-- badge -->
   {most_popular && <p class="badge">Most Popular</p>}
@@ -51,16 +51,76 @@ const {
   <!-- features -->
   <ul>
     {
-      features.map((f) => (
+      features.map((feature) => (
         <li class="feature">
-          {f.checked ? (
-            <Icon name="radix-icons:check" width="24" />
+          {feature.checked ? (
+            <Icon name="ri:check" width="20" class="lossless" />
           ) : (
-            <Icon name="radix-icons:cross-2" width="24" />
+            <Icon name="ri:hearts-fill" width="20" class="lossless" />
           )}
-          <span>{f.title}</span>
+          <span class="feature-title">{feature}</span>
+          </span>
         </li>
       ))
     }
   </ul>
 </article>
+
+<style>
+  article.option-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: .25em 1em 1em 0;
+    margin: 0 1em;
+    > h3 {
+      font-size: var(--fs-700);
+      margin-bottom: 4px;
+    }
+  }
+  p.tier,
+  p.desc {
+    padding: 0.1em;
+    color: teal;
+    font-family: var(--ff-base);
+    font-size: var(--fs-500);
+    max-width: 50%;
+    text-align: center;
+    line-height: 1.2;
+  }
+  ul.features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  li.feature {
+    display: flex;
+    justify-items: center;
+    gap: 10px;
+    font-size: var(--fs-400);
+    line-height: 1.4;
+  }
+  .lossless {
+    color: #fff;
+    margin-top: 0.2em;
+    margin-bottom: 0;
+    align-self: baseline;
+  }
+  .amt {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--clr-body);
+    font-family: var(--ff-legible);
+    padding: 0;
+    > p {
+      color: currentColor;
+    }
+  }
+  span.feature-title {
+    color: #fff;
+    font-family: var(--ff-legible);
+  }
+</style>
