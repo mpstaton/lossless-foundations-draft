@@ -1,0 +1,53 @@
+---
+const btnVarieties = {
+  default: "btn--default",
+  icon: "btn--icon",
+};
+
+const {
+  classes,
+  variety = "default",
+  isBordered,
+  background = "hsla(184, 35%, 92%, 1.00)",
+  color = "hsla(196, 45%, 20%, 1.00)",
+  ...rest
+} = Astro.props;
+---
+
+<button
+  class:list={["btn", classes, btnVarieties[variety], { border: isBordered }]}
+  {...rest}
+>
+  <slot />
+</button>
+
+<style
+  define:vars={{
+    background,
+    color,
+  }}
+>
+  .btn {
+    font: inherit;
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    background: var(--clr-lossless-primary-dark);
+    color: var(--clr-btn-label);
+    border: 1px solid var(--clr-lossless-ui-btn-border);
+    border-radius: 0.5rem;
+    font-size: 1em;
+    font-family: "Onest", sans-serif;
+    &:hover {
+      background: var(--clr-btn-hover);
+    }
+  }
+  .btn--default {
+    padding: 4px 16px;
+  }
+  .btn--icon {
+    aspect-ratio: 1/1;
+  }
+</style>

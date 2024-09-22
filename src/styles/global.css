@@ -37,11 +37,14 @@
     --clr-lossless-primary-glass-gr--70-30p: var(--gr-white--70-30p);
     --clr-lossless-primary-glass-gr--60-40p: var(--gr-white--60-40p);
     --clr-lossless-attn-action: var(--purple-heart);
+    --clr-lossless-ui-btn-border: var(--clr-lossless-primary-light);
 
 
     --clr-heading: var(--clr-lossless-accent--brightest);
     --clr-body: var(--clr-lossless-primary-light);
-    --clr-link: var(--clr-lossless-accent--brightest); 
+    --clr-link: var(--clr-lossless-accent--brightest);
+    --clr-btn-label: var(--clr-lossless-primary-light);
+    --clr-btn-hover: var(--clr-lossless-attn-action);
 
     --ff-base: 'Poppins', sans-serif;
     --ff-legible: 'Onest', sans-serif;
