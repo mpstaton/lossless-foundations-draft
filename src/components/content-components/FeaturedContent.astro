@@ -1,0 +1,101 @@
+---
+import "@styles/global.css";
+const header = "Featured Article Header";
+const bannerTxt = "Our Featured Article";
+
+const { class: className } = Astro.props;
+---
+
+<div class="wide-stretch">
+  <h2>Featured Content</h2>
+
+  <div class:list={[className, "feature-container mbe-xl"]}>
+    <h3>{bannerTxt}</h3>
+    <article>
+      <img src="/images/image-web-3-desktop.jpg" alt="" />
+      <h4>{header}</h4>
+      <div class="flow">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
+          veniam odit quasi eos odio repudiandae, voluptates, id minus expedita
+          exercitationem incidunt commodi totam nisi accusantium eius magni?
+          Sequi, soluta amet!
+        </p>
+        <a href="#" class="button">
+          Read More
+          <span class="visually-hidden"
+            >Read More of the Featured Article
+          </span>
+        </a>
+      </div>
+    </article>
+  </div>
+</div>
+<style>
+  .feature-container {
+    container-type: inline-size;
+  }
+  .wide-stretch {
+    width: 94vw;
+  }
+
+  article {
+    display: grid;
+    gap: 1rem;
+
+    @container (width > calc(25ch * 2)) {
+      gap: 2rem 1rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  img {
+    width: auto;
+    grid-column: 1 / -1;
+  }
+  .button {
+    display: inline flex;
+    padding: 0.75em 1.5em;
+    margin: auto;
+    width: auto;
+    border-radius: 0.66em;
+    background-color: var(--clr-lossless-primary-glass);
+    color: var(--clr-lossless-accent--brightest);
+    cursor: pointer;
+    font-weight: var(--fw-semi-bold);
+    letter-spacing: 0.1ch;
+
+    &:focus-visible,
+    &:hover {
+      background-color: var(--clr-lossless-attn-action);
+      color: var(--clr-lossless-primary-light);
+    }
+  }
+  h3 {
+    font-size: var(--fs-600);
+  }
+
+  h2 {
+    font-size: var(--fs-700);
+  }
+  h4 {
+    font-size: var(--fs-500);
+  }
+  p {
+    font-size: var(--fs-body);
+    color: var(--clr-lossless-primary-light);
+    font-family: var(--ff-legible);
+  }
+
+  .flow > * + * {
+    margin-block-start: var(--flow-space, 1em);
+  }
+
+  .mbe-xl {
+    margin-block-end: 3rem;
+  }
+
+  article:has(p) {
+    font-size: var(--fs-350);
+  }
+</style>

@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import HelloWorld from "@components/HelloWorld.astro";
-// import { Content as AboutContent } from "../content/component-copy/about.md";
+import FeaturedContent from "@components/content-components/FeaturedContent.astro"; // import { Content as AboutContent } from "../content/component-copy/about.md";
 import Card from "@components/Card.astro";
 import Button from "@components/ui-elements/Button.astro";
 import imageOf from "../assets/Carrie.png";
@@ -13,6 +13,7 @@ import image01 from "../assets/Car.png";
   <BaseLayout>
     <h2>Hello World</h2>
     <HelloWorld />
+    <FeaturedContent />
     <Card
       img={image01.src}
       alt="car"

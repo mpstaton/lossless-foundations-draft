@@ -8,52 +8,51 @@ import Counter from "@components/Counter.tsx";
 
 import { type CollectionEntry, getCollection } from "astro:content";
 
-export async function getStaticPaths() {
-  const allSections: CollectionEntry<"sections">[] =
-    await getCollection("sections");
-  return allSections.map((section) => ({
-    params: { slug: section.slug },
-    props: { section },
-  }));
-}
+// export async function getStaticPaths() {
+//   const allSections: CollectionEntry<"sections">[] =
+//     await getCollection("sections");
+//   return allSections.map((section) => ({
+//     params: { slug: section.slug },
+//     props: { section },
+//   }));
+// }
 
 const allSections: CollectionEntry<"sections">[] =
   await getCollection("sections");
+
 console.log(allSections);
 
 import headingsData from "../data/headingsData.json";
 ---
 
-<>
-  <HypertextStartmatter />
-  <BaseLayout>
-    <Counter client:only="react" />
-    {
-      headingsData.headings.map((heading) => (
-        <>
-          <p>hi</p>
-          <Heading tagName={heading.tagName} size={heading.size}>
-            {heading.text}
-          </Heading>
-        </>
-      ))
-    }
-    <div class="base-reader-container">
-      <!--this is where the code I need help with is. Needs to render as markdown so it can be styled properly. -->
-      <ul>
-        {
-          allSections.map((section) => (
-            <li>
-              <h1>{section.data.title}</h1>
-              <p>{section.body}</p>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </BaseLayout>
-  <HypertextEndmatter />
-</>
+<HypertextStartmatter />
+<BaseLayout>
+  <Counter client:only="react" />
+  {
+    headingsData.headings.map((heading) => (
+      <>
+        <p>hi</p>
+        <Heading tagName={heading.tagName} size={heading.size}>
+          {heading.text}
+        </Heading>
+      </>
+    ))
+  }
+  <div class="base-reader-container">
+    <!--this is where the code I need help with is. Needs to render as markdown so it can be styled properly. -->
+    <ul>
+      {
+        allSections.map((section) => (
+          <li>
+            <h1>{section.data.title}</h1>
+            <p>{section.body}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>
+<HypertextEndmatter />
 
 <style>
   h1 {
