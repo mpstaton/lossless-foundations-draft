@@ -5,6 +5,8 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import HypertextEndmatter from "@basics/HypertextEndmatter.astro";
 import Heading from "@components/ContentHeading.astro";
 import Counter from "@components/Counter.tsx";
+import { marked } from 'marked';
+
 
 import { type CollectionEntry, getCollection } from "astro:content";
 
@@ -41,14 +43,15 @@ import headingsData from "../data/headingsData.json";
   <div class="base-reader-container">
     <!--this is where the code I need help with is. Needs to render as markdown so it can be styled properly. -->
     <ul>
-      {
-        allSections.map((section) => (
-          <li>
-            <h1>{section.data.title}</h1>
-            <p>{section.body}</p>
-          </li>
-        ))
-      }
+      {allSections.map((section) => {
+      const htmlContent = marked(section.body); 
+      return (
+        <li>
+          <h1>{section.data.title}</h1>
+          <div set:html={htmlContent} />
+        </li>
+      );
+    })}
     </ul>
   </div>
 </BaseLayout>
