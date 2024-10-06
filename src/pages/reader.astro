@@ -10,6 +10,17 @@ import { marked } from 'marked';
 
 import { type CollectionEntry, getCollection } from "astro:content";
 
+type HeadingSize = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+type HeadingTagName = HeadingSize; // Assuming tagName accepts the same values as size
+
+function isValidHeadingSize(size: string): size is HeadingSize {
+  return ["h1", "h2", "h3", "h4", "h5", "h6"].includes(size);
+}
+
+function isValidHeadingTagName(tagName: string): tagName is HeadingTagName {
+  return ["h1", "h2", "h3", "h4", "h5", "h6"].includes(tagName);
+}
+
 // export async function getStaticPaths() {
 //   const allSections: CollectionEntry<"sections">[] =
 //     await getCollection("sections");
@@ -30,16 +41,17 @@ import headingsData from "../data/headingsData.json";
 <HypertextStartmatter />
 <BaseLayout>
   <Counter client:only="react" />
-  {
-    headingsData.headings.map((heading) => (
-      <>
-        <p>hi</p>
-        <Heading tagName={heading.tagName} size={heading.size}>
-          {heading.text}
-        </Heading>
-      </>
-    ))
-  }
+  {headingsData.headings.map((heading) => {
+    const size = isValidHeadingSize(heading.size) ? heading.size : "h1";
+    console.log(size)
+    const tagName = isValidHeadingTagName(heading.tagName) ? heading.tagName : "h1";
+    console.log(tagName)
+    return (
+      <Heading tagName={tagName} size={size}>
+        {heading.text}
+      </Heading>
+    );
+  })}
   <div class="base-reader-container">
     <!--this is where the code I need help with is. Needs to render as markdown so it can be styled properly. -->
     <ul>
