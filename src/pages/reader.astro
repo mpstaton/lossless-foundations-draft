@@ -5,8 +5,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import HypertextEndmatter from "@basics/HypertextEndmatter.astro";
 import Heading from "@components/ContentHeading.astro";
 import Counter from "@components/Counter.tsx";
-import { marked } from 'marked';
-
+import { marked } from "marked";
 
 import { type CollectionEntry, getCollection } from "astro:content";
 
@@ -41,29 +40,35 @@ import headingsData from "../data/headingsData.json";
 <HypertextStartmatter />
 <BaseLayout>
   <Counter client:only="react" />
-  {headingsData.headings.map((heading) => {
-    const size = isValidHeadingSize(heading.size) ? heading.size : "h1";
-    console.log(size)
-    const tagName = isValidHeadingTagName(heading.tagName) ? heading.tagName : "h1";
-    console.log(tagName)
-    return (
-      <Heading tagName={tagName} size={size}>
-        {heading.text}
-      </Heading>
-    );
-  })}
+  {
+    headingsData.headings.map((heading) => {
+      const size = isValidHeadingSize(heading.size) ? heading.size : "h1";
+      console.log(size);
+      const tagName = isValidHeadingTagName(heading.tagName)
+        ? heading.tagName
+        : "h1";
+      console.log(tagName);
+      return (
+        <Heading tagName={tagName} size={size}>
+          {heading.text}
+        </Heading>
+      );
+    })
+  }
   <div class="base-reader-container">
     <!--this is where the code I need help with is. Needs to render as markdown so it can be styled properly. -->
     <ul>
-      {allSections.map((section) => {
-      const htmlContent = marked(section.body); 
-      return (
-        <li>
-          <h1>{section.data.title}</h1>
-          <div set:html={htmlContent} />
-        </li>
-      );
-    })}
+      {
+        allSections.map((section) => {
+          const htmlContent = marked.parse(section.body);
+          return (
+            <li>
+              <h1>{section.data.title}</h1>
+              <div set:html={htmlContent} class="md-content" />
+            </li>
+          );
+        })
+      }
     </ul>
   </div>
 </BaseLayout>
@@ -88,5 +93,9 @@ import headingsData from "../data/headingsData.json";
     height: 86vh;
     justify-self: start;
     border: 1px solid var(--bastille);
+  }
+  .md-content {
+    font-family: var(--ff-legible);
+    color: var(--clr-body);
   }
 </style>
